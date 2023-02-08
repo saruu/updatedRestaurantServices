@@ -1,7 +1,7 @@
 package com.himal.malla.himal.Controler;
 
 import com.himal.malla.himal.Enity.Order;
-import com.himal.malla.himal.ServiceImpl.OrderService;
+
 import com.himal.malla.himal.ServiceImpl.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,40 +13,49 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private OrderService orderService;
+    private OrderServiceImpl orderServices;
 
     @PostMapping("/save")
     public Order saveOrder(@RequestBody Order order){
-        return orderService.save(order);
+        return orderServices.save(order);
      }
 
      @PostMapping("/create")
     public Order createOrder(@RequestBody Order order) {
-        return orderService.createOrder(order);
+        return orderServices.createOrder(order);
      }
 
     @PostMapping("/saveAll")
     public List<Order> saveAll(@RequestBody List<Order> orderList){
-        return orderService.saveAll(orderList);
+        return orderServices.saveAll(orderList);
     }
 
     @GetMapping("/orders")
     public List<Order> findAllOrders(){
-        return orderService.getOrders();
+        return orderServices.getOrders();
+    }
+    @GetMapping("/findGross")
+    public String findGross(){
+        return orderServices.getGrossSales();
+    }
+
+    @GetMapping("/findGrossByQuery")
+    public double findGrossByQuery(){
+        return orderServices.getGrossByQuery();
     }
 
     @GetMapping("/orderId/{orderId}")
-    public Order findOrderById(@PathVariable Long orderId){
-        return orderService.getOrderById(orderId);
+    public Order findOrderById(@PathVariable int orderId){
+        return orderServices.getOrderById(orderId);
     }
 
     @PutMapping("/updateOrder")
     public Order updateOrder(@RequestBody Order order){
-        return orderService.updateOrder(order);
+        return orderServices.updateOrder(order);
     }
 
     @DeleteMapping("/deleteOrder/{orderId}")
-    public String deleteOrder(@PathVariable Long orderId){
-        return orderService.deleteOrder(orderId);
+    public String deleteOrder(@PathVariable int orderId){
+        return orderServices.deleteOrder(orderId);
     }
 }

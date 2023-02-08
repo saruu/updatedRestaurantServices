@@ -1,6 +1,7 @@
 package com.himal.malla.himal.Controler;
 
 import com.himal.malla.himal.Enity.User;
+import com.himal.malla.himal.ServiceImpl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +12,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @PostMapping("/save")
     public User saveUser(@RequestBody User user){

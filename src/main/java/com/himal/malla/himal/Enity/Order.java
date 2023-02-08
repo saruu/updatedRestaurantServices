@@ -19,17 +19,21 @@ import java.util.Date;
 public class Order {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue()//strategy = GenerationType.AUTO)
     @Column(name = "order_id")
-    private Long orderId;
+    private int orderId;
 
     @Column(name = "order_date")
     private String orderDate;
 
     private  int quantity;
     private double price;
+    private double totalAmount;
+
+    private double discountedAmount;
 
     private String invoiceNum;
+
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_user_id")

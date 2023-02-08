@@ -1,6 +1,7 @@
 package com.himal.malla.himal.Controler;
 
 import com.himal.malla.himal.Enity.Product;
+import com.himal.malla.himal.ServiceImpl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +11,7 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-    public ProductService productService;
+    public ProductServiceImpl productService;
 
     @PostMapping("/save")
     public Product saveMan(@RequestBody Product product){
@@ -33,15 +34,6 @@ return productService.save(product);
         return productService.getProductById(productId);
     }
 
-//    @GetMapping("/manId/{id}")
-//    public UserEntity findBooksByUserId(@PathVariable long id){
-//        return booksService.getBooksByUserId(id);
-//    }
-
-//    @GetMapping("/books/{name}")
-//    public BooksEntity findBooksByName(@PathVariable String name){
-//        return booksService.getBooksByName(name);
-//    }
 
     @PutMapping("/updateProduct")
     public Product updateProduct(@RequestBody Product product){

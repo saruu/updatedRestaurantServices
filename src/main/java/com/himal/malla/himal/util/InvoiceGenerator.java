@@ -10,8 +10,13 @@ public class InvoiceGenerator {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-
-
-        return productName+"_"+now+"_"+orderId;
+        StringBuffer buffer=new StringBuffer();
+        buffer.append(productName);
+        buffer.append("_");
+        buffer.append(now);
+        buffer.append("_").append(orderId);
+        return buffer.toString();
     }
+
+
 }
